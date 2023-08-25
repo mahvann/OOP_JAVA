@@ -20,6 +20,6 @@ public class Main {
         System.out.println("Hello World");
         MenoryManagement var13 = new MenoryManagement();
         var13.myMethod1(14,15);
-        
+        System.out.println("Hello");
     }
 }
