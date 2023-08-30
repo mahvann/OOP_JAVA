@@ -19,7 +19,9 @@ public class Main {
     public static void main(String [] args){ //Method area
         System.out.println("Hello World");
         MenoryManagement var13 = new MenoryManagement(); //Heap area
+        //var13 lưu ở Stack do là biến local
         var13.myMethod1(14,15);
+        // Lời gọi hàm lưuở Stack
         System.out.println("Hello");
     }
 }
