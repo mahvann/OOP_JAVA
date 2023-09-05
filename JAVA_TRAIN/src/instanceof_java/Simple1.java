@@ -5,9 +5,18 @@ class Animal{
 
 }
 class Dog extends Animal{
-    public void eat(){
-        System.out.println("eat bone");
+
+    static void method(Object obj){
+        if(obj instanceof Dog){
+            Dog dog = (Dog)obj;
+            System.out.println("OK");
+        }
+        else System.out.println("Not OK");
     }
+    public void eat(){
+        System.out.println("eat bones");
+    }
+
     public static void main(String[] args) {
         Animal a = new Dog(); //upcasting
         if (a instanceof Dog){
@@ -34,6 +43,7 @@ class Dog extends Animal{
         else{
             System.out.println("False");
         }
+
 
 
     }

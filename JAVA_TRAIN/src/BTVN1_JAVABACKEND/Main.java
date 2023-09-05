@@ -21,11 +21,12 @@ public class Main {
     public static void main(String [] args){ //Method area
         int n = 10; //Biến local được khởi tạo và lưu ở Stack
         System.out.println("Hello World");
+
+
         MenoryManagement var13 = new MenoryManagement(); //Khi dùng từ khóa new tạo một đối tượng mới thì đối tượng này MenoryManagement lưu trong bộ nhớ Heap
         //Biến tam chiếu var13 nằm trong bộ nhớ Stack trỏ đến đối tượng MenoryManagement
         var13.myMethod1(14,15);
         //Hàm myMethod1() được gọi và lưu trong bộ nhớ Stack
         //Biến var8, var9 là biến local nên được lưu trong Stack
-        System.out.println("Hello");
     }
 }
