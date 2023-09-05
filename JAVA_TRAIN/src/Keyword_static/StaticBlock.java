@@ -1,6 +1,5 @@
 package Keyword_static;
-
-class InitializationExample {
+class Example {
     static int value;
 
     static {
@@ -12,8 +11,8 @@ class InitializationExample {
         System.out.println("Value: " + value);
     }
 }
-public class static_block {
-    public static void main(String[] args) {
-        InitializationExample.printValue(); // Gọi phương thức tĩnh
-    }
+public class StaticBlock {
+        public static void main(String[] args) {
+           Example.printValue(); // Gọi phương thức tĩnh
+        }
 }
