@@ -1,5 +1,6 @@
 package instanceof_java;
 
+
 class Animal{
 
 }

@@ -1,6 +1,6 @@
 package constructor;
 
-public class Vuon {
+class Vuon {
     Vuon(){
         System.out.println("Day la class Vuon");
     }

@@ -6,7 +6,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         SinhVien sv =new SinhVien();
-        List<SinhVien> list = new List<>();
+      //Sai -->  List<SinhVien> list = new List<>();
         ArrayList<Integer> arr = new ArrayList<>();
 
     }
