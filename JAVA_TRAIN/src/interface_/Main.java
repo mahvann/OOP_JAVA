@@ -15,7 +15,8 @@ public class Main {
             paymentGateway = new MasterCard();
         }
         paymentGateway.payment();
-        VisaCard visa = new VisaCard();
-        visa.payment();
+
+//        VisaCard visa = new VisaCard();
+//        visa.payment();
     }
 }
