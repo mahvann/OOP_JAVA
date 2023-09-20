@@ -43,7 +43,7 @@ public class ExampleDate2 {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
         System.out.println(sdf.format(date1));
 
-        //convert String to Date
+        //convert String to Date with SimpleDateFormat
         Date date5 =  sdf.parse("20-Aug-2023 07:08");
         System.out.println(date5);
     }
