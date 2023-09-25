@@ -12,7 +12,7 @@ public class ExampleLocalDate {
         System.out.println("-----------------------LocalDate---------------------------");
         // init LocalDate with static method
         LocalDate lD = LocalDate.now();
-        System.out.println(lD);
+        System.out.println("LocalDate: " + lD);
 
         //init and print object LocalDate with static method of()
         LocalDate lD1 = LocalDate.of(2023, 9, 20);
@@ -31,7 +31,7 @@ public class ExampleLocalDate {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         //DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(Locale.getDefault());
         //print with format
-        System.out.println(lD.format(dtf));
+        System.out.println("LocalDate with my format: " + lD.format(dtf));
 
         //convert String to LocalDate with DateTimeFormetter
         String strDate = "20-09-2023";
@@ -50,10 +50,13 @@ public class ExampleLocalDate {
         System.out.println("-----------------------LocalDateTime-----------------------");
         //init object LocalDateTime
         LocalDateTime ldt = LocalDateTime.now();
-        System.out.println(ldt);
+        System.out.println("LocalDatetime: " + ldt);
+
+
 
         //convert LocalDateTime to String with method format
-        String lDTString = ldt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        String lDTString = dtf1.format(ldt);
         System.out.println(lDTString);
 
 

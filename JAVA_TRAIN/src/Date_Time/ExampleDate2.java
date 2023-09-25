@@ -27,24 +27,19 @@ public class ExampleDate2 {
         System.out.println(date3);
 
         //method getTime()
-        System.out.println(date1.getTime());
+        System.out.println("getTime(): " + date1.getTime());
 
-        //
-        Instant instant = Instant.now();
-        System.out.println(instant);
-        Date date4 = Date.from(instant);
-        System.out.println(date4);
 
         //
         String date1String = date1.toString();
         System.out.println(date1String + " Bee");
 
         //init object SimpleDateFormat
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
-        System.out.println(sdf.format(date1));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        System.out.println("sdf: " + sdf.format(date1));
 
         //convert String to Date with SimpleDateFormat
-        Date date5 =  sdf.parse("20-Aug-2023 07:08");
+        Date date5 =  sdf.parse("20-09-2023 07:08:59");
         System.out.println(date5);
     }
 }

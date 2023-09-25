@@ -1,14 +1,17 @@
 package Date_Time;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.Date;
 
 public class test {
-        private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        private static DateTimeFormatter sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         public static void main(String[] args) {
             Runnable task = () -> {
                 try {
-                    Date date = sdf.parse("2023-09-20");
+                    LocalDate date = LocalDate.parse("2023-09-20",sdf);
                     System.out.println("Parsed date: " + date);
                 } catch (Exception e) {
                     e.printStackTrace();
