@@ -17,10 +17,10 @@ public class StreamLazyExample {
         counter = 0;
         Stream<String> stream = list.stream().filter(element ->{
            wasCalled();
-            return element.contains("2");
+           return element.contains("2");
         });
 
-        //stream.forEach(System.out::println);
+        stream.forEach(System.out::println);
 
         System.out.println(counter);
 

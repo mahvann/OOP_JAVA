@@ -10,7 +10,9 @@ public class MethodReferencesExample2 {
         //Reference to static method (Class::staticMethod)
         Sayable1 s1 = MethodReferencesExample2::doSomething;
 
+        Sayable1 s2 = ()->doSomething();
         //Call interface method
         s1.say();
+        s2.say();
     }
 }

@@ -40,7 +40,9 @@ public class MethodReferencesExample5 {
 
         // Sử dụng .toArray để lưu trữ kết quả vào một mảng Bicycle1[]
         //Bicycle1[] bicycles = bikeBrands.stream().map(Bicycle1::new).toList().toArray(new Bicycle1[0]);
+
         Bicycle1[] bicycles = bikeBrands.stream().map(Bicycle1::new).toArray(Bicycle1[] ::new);
+        Bicycle1[] bicycles2 = bikeBrands.stream().map(x-> new Bicycle1(x)).toArray(size-> new Bicycle1[size]);
 
         // In danh sách các đối tượng Bicycle1
         for (Bicycle1 bicycle : bicycles) {

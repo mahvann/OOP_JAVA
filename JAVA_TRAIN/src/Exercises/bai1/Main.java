@@ -1,5 +1,5 @@
 package Exercises.bai1;
 
-public class QLCB {
-    
+public class Main {
+
 }

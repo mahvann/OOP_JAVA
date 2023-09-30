@@ -13,7 +13,7 @@ public class MethodReferencesExample4 {
         System.out.println();
 
         //lambda
-        numbers.stream().sorted((a,b)-> a.compareTo(b)).toList().forEach(x->{
+        numbers.stream().sorted((a,b)-> b.compareTo(a)).sorted(Integer::compareTo).toList().forEach(x->{
             System.out.print(x + " ");
         });
         System.out.println();
