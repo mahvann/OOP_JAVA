@@ -78,7 +78,9 @@ public class Main {
                 case "4":{
                     return;
                 }
-
+                default:
+                    System.out.println("Invalid");
+                    continue;
             }
         }
     }
