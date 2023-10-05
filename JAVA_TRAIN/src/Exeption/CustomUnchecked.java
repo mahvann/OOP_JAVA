@@ -19,7 +19,7 @@ class CustomCastExceptionDemo {
 public class CustomUnchecked {
     public static void main(String[] args) {
         try {
-            Integer obj = 123;
+            String obj = "";
             Integer num = CustomCastExceptionDemo.castToInteger(obj);
             System.out.println("Casting successful: " + num);
         } catch (CustomCastException e) {
