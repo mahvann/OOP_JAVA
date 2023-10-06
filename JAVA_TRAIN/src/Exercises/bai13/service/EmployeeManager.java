@@ -9,6 +9,14 @@ import java.util.stream.Collectors;
 public class EmployeeManager {
     private List<Employee> employees;
 
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+
     public EmployeeManager() {
         this.employees =new ArrayList<>();
     }

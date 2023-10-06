@@ -1,14 +1,17 @@
 package Exercises.bai13.entity;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Intern extends Employee{
+    public static long count = 0;
     private String majors;
     private int semester;
     private String universityName;
 
     public Intern() {
+        count++;
     }
 
 
@@ -17,6 +20,7 @@ public class Intern extends Employee{
         this.majors = majors;
         this.semester = semester;
         this.universityName = universityName;
+        count++;
     }
 
     public Intern(String id, String fullName, LocalDate birthday, String phone, String email, List<Certificate> certificates, String majors, int semester, String universityName) {
@@ -24,6 +28,7 @@ public class Intern extends Employee{
         this.majors = majors;
         this.semester = semester;
         this.universityName = universityName;
+        count++;
     }
 
     @Override
@@ -57,13 +62,14 @@ public class Intern extends Employee{
 
     @Override
     public String toString() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return "Intern{" +
                 "majors='" + majors + '\'' +
                 ", semester=" + semester +
                 ", universityName='" + universityName + '\'' +
                 ", id='" + id + '\'' +
                 ", fullName='" + fullName + '\'' +
-                ", birthday=" + birthday +
+                ", birthday=" + dateTimeFormatter.format(birthday) +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", certificates=" + certificates +

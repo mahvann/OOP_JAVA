@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Employee {
-    public static long count = 0;
+
     protected String id;
     protected String fullName;
     protected LocalDate birthday;
@@ -16,6 +16,7 @@ public abstract class Employee {
     public Employee() {
 
         certificates = new ArrayList<>();
+
     }
 
     public Employee(String id, String fullName, LocalDate birthday, String phone, String email, List<Certificate> certificates) {
@@ -25,6 +26,7 @@ public abstract class Employee {
         this.phone = phone;
         this.email = email;
         this.certificates = certificates;
+
     }
 
     public abstract void showInformation();

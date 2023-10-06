@@ -1,15 +1,17 @@
 package Exercises.bai13.entity;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Fresher extends Employee{
-
+    public static long count = 0;
     private LocalDate graduationDate;
     private String graduationRank;
     private String education;
 
     public Fresher() {
+        count++;
     }
 
 
@@ -17,6 +19,7 @@ public class Fresher extends Employee{
         this.graduationDate = graduationDate;
         this.graduationRank = graduationRank;
         this.education = education;
+        count++;
     }
 
 
@@ -25,6 +28,7 @@ public class Fresher extends Employee{
         this.graduationDate = graduationDate;
         this.graduationRank = graduationRank;
         this.education = education;
+        count++;
     }
 
     @Override
@@ -58,13 +62,14 @@ public class Fresher extends Employee{
 
     @Override
     public String toString() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return "Fresher{" +
                 "graduationDate=" + graduationDate +
                 ", graduationRank='" + graduationRank + '\'' +
                 ", education='" + education + '\'' +
                 ", id='" + id + '\'' +
                 ", fullName='" + fullName + '\'' +
-                ", birthday=" + birthday +
+                ", birthday=" + dateTimeFormatter.format(birthday) +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", certificates=" + certificates +
