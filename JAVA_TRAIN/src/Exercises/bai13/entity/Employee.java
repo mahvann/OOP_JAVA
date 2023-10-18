@@ -2,7 +2,9 @@ package Exercises.bai13.entity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public abstract class Employee {
 
@@ -11,15 +13,15 @@ public abstract class Employee {
     protected LocalDate birthday;
     protected String phone;
     protected String email;
-    protected List<Certificate> certificates;
+    protected Set<Certificate> certificates;
 
     public Employee() {
 
-        certificates = new ArrayList<>();
+        certificates = new HashSet<>();
 
     }
 
-    public Employee(String id, String fullName, LocalDate birthday, String phone, String email, List<Certificate> certificates) {
+    public Employee(String id, String fullName, LocalDate birthday, String phone, String email, Set<Certificate> certificates) {
         this.id = id;
         this.fullName = fullName;
         this.birthday = birthday;
@@ -71,11 +73,11 @@ public abstract class Employee {
         this.email = email;
     }
 
-    public List<Certificate> getCertificates() {
+    public Set<Certificate> getCertificates() {
         return certificates;
     }
 
-    public void setCertificates(List<Certificate> certificates) {
+    public void setCertificates(Set<Certificate> certificates) {
         this.certificates = certificates;
     }
 }

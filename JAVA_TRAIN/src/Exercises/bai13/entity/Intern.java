@@ -3,6 +3,7 @@ package Exercises.bai13.entity;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Set;
 
 public class Intern extends Employee{
     public static long count = 0;
@@ -23,7 +24,7 @@ public class Intern extends Employee{
         count++;
     }
 
-    public Intern(String id, String fullName, LocalDate birthday, String phone, String email, List<Certificate> certificates, String majors, int semester, String universityName) {
+    public Intern(String id, String fullName, LocalDate birthday, String phone, String email, Set<Certificate> certificates, String majors, int semester, String universityName) {
         super(id, fullName, birthday, phone, email, certificates);
         this.majors = majors;
         this.semester = semester;

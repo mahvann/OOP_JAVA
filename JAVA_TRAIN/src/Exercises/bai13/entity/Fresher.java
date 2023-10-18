@@ -3,6 +3,7 @@ package Exercises.bai13.entity;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Set;
 
 public class Fresher extends Employee{
     public static long count = 0;
@@ -23,7 +24,7 @@ public class Fresher extends Employee{
     }
 
 
-    public Fresher(String id, String fullName, LocalDate birthday, String phone, String email, List<Certificate> certificates, LocalDate graduationDate, String graduationRank, String education) {
+    public Fresher(String id, String fullName, LocalDate birthday, String phone, String email, Set<Certificate> certificates, LocalDate graduationDate, String graduationRank, String education) {
         super(id, fullName, birthday, phone, email, certificates);
         this.graduationDate = graduationDate;
         this.graduationRank = graduationRank;

@@ -19,6 +19,7 @@ public class Certificate {
     public Certificate() {
     }
 
+
     public Certificate(String id, String name, String rank, LocalDate date) {
         this.id = id;
         this.name = name;

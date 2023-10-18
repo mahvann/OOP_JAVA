@@ -35,69 +35,13 @@ public class UIManager {
             id = scanner.nextLine();
         }
 
-        String fullName;
-        while (true) {
-            try {
-                System.out.print("Input full name: ");
-                fullName = scanner.nextLine();
-                fullName = Arrays.stream(fullName.trim().replaceAll("\\s+", " ").split(" "))
-                        .map(w -> w.substring(0, 1).toUpperCase() + w.substring(1).toLowerCase())
-                        .collect(Collectors.joining(" "));
-                ValidatorService.nameCheck(fullName);
-                System.out.println(fullName);
-                break;
-            } catch (FullNameException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-
-        LocalDate birthday = null;
-        String birthdayString;
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        while (true) {
-            System.out.println("Input birthday(dd-MM-yyyy): ");
-            birthdayString = scanner.nextLine();
-            birthdayString = birthdayString.trim();
-            if (containsLetterRegex(birthdayString) || !containsBirthdayRegex(birthdayString)) {
-                System.out.println("Date is invalid. Entry please!!");
-            } else {
-                try {
-                    birthday = LocalDate.parse(birthdayString, dateTimeFormatter);
-                    ValidatorService.birthdayCheck(birthday);
-                    break;
-                } catch (BirthdayException e) {
-                    System.out.println(e.getMessage());
-                }
-            }
-
-        }
+        String fullName = createName(scanner);
+        LocalDate birthday = createDate(scanner);
+        String phone=createPhone(scanner);
+        String email=createEmail(scanner);
 
 
-        String phone;
-        while (true) {
-            try {
-                System.out.print("Input Phone: ");
-                phone = scanner.nextLine();
-                ValidatorService.phoneCheck(phone);
-                break;
-            } catch (PhoneException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-
-        String email;
-        while (true) {
-            try {
-                System.out.print("Input Email: ");
-                email = scanner.nextLine();
-                ValidatorService.emailCheck(email);
-                break;
-            } catch (EmailException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-
-        List<Certificate> certificates = new ArrayList<>();
+        Set<Certificate> certificates = new HashSet<>();
         int n;
         System.out.println("Enter number of Certificate: ");
         n = scanner.nextInt();
@@ -109,7 +53,6 @@ public class UIManager {
             certificates.add(certificate);
         }
 
-
         if (type == 0) {
             System.out.println("Input experience in year: ");
             int expInYear = scanner.nextInt();
@@ -118,25 +61,7 @@ public class UIManager {
             String proSkill = scanner.nextLine();
             return new Experience(id, fullName, birthday, phone, email, certificates, expInYear, proSkill);
         } else if (type == 1) {
-            LocalDate graduationDate = null;
-            String graduationDateString;
-            while (true) {
-                System.out.println("Input graduation date(dd-MM-yyyy): ");
-                graduationDateString = scanner.nextLine().trim();
-                if (containsLetterRegex(graduationDateString) || !containsBirthdayRegex(graduationDateString)) {
-                    System.out.println("Graduation date is invalid. Entry please!!");
-                } else {
-                    try {
-                        graduationDate = LocalDate.parse(graduationDateString, dateTimeFormatter);
-                        ValidatorService.birthdayCheck(graduationDate);
-                        break;
-                    } catch (BirthdayException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
-
-            }
-
+            LocalDate graduationDate = createDate(scanner);
             System.out.println("Input graduation rank: ");
             String graduationRank = scanner.nextLine();
             System.out.println("Input education: ");
@@ -230,68 +155,17 @@ public class UIManager {
         Employee employeeUpdate = employeeManager.findById(id);
         if (employeeUpdate != null) {
             System.out.println("Enter update information");
-            String fullName;
-            while (true) {
-                try {
-                    System.out.print("Input full name: ");
-                    fullName = scanner.nextLine();
-                    fullName = Arrays.stream(fullName.trim().replaceAll("\\s+", " ").split(" "))
-                            .map(w -> w.substring(0, 1).toUpperCase() + w.substring(1).toLowerCase())
-                            .collect(Collectors.joining(" "));
-                    ValidatorService.nameCheck(fullName);
-                    employeeUpdate.setFullName(fullName);
-                    break;
-                } catch (FullNameException e) {
-                    System.out.println(e.getMessage());
-                }
-            }
+            String fullName=createName(scanner);
+            employeeUpdate.setFullName(fullName);
 
-            LocalDate birthday = null;
-            String birthdayString;
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            while (true) {
-                System.out.println("Input birthday(dd-MM-yyyy): ");
-                birthdayString = scanner.nextLine();
-                birthdayString = birthdayString.trim();
-                if (containsLetterRegex(birthdayString) || !containsBirthdayRegex(birthdayString)) {
-                    System.out.println("Date is invalid. Entry please!!");
-                } else {
-                    try {
-                        birthday = LocalDate.parse(birthdayString, dateTimeFormatter);
-                        ValidatorService.birthdayCheck(birthday);
-                        employeeUpdate.setBirthday(birthday);
-                        break;
-                    } catch (BirthdayException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
-            }
+            LocalDate birthday = createDate(scanner);
+            employeeUpdate.setBirthday(birthday);
 
-            String phone;
-            while (true) {
-                try {
-                    System.out.print("Input Phone: ");
-                    phone = scanner.nextLine();
-                    ValidatorService.phoneCheck(phone);
-                    employeeUpdate.setPhone(phone);
-                    break;
-                } catch (PhoneException e) {
-                    System.out.println(e.getMessage());
-                }
-            }
+            String phone = createPhone(scanner);
+            employeeUpdate.setPhone(phone);
 
-            String email;
-            while (true) {
-                try {
-                    System.out.print("Input Email: ");
-                    email = scanner.nextLine();
-                    ValidatorService.emailCheck(email);
-                    employeeUpdate.setEmail(email);
-                    break;
-                } catch (EmailException e) {
-                    System.out.println(e.getMessage());
-                }
-            }
+            String email = createEmail(scanner);
+            employeeUpdate.setEmail(email);
 
             List<Certificate> certificates = null;
             if (employeeUpdate instanceof Experience) {
@@ -304,27 +178,8 @@ public class UIManager {
                 ((Experience) employeeUpdate).setProSkill(proSkill);
 
             } else if (employeeUpdate instanceof Fresher) {
-                LocalDate graduationDate = null;
-                String graduationDateString;
-                while (true) {
-                    System.out.println("Input graduation date(dd-MM-yyyy): ");
-                    graduationDateString = scanner.nextLine().trim();
-                    if (containsLetterRegex(graduationDateString) || !containsBirthdayRegex(graduationDateString)) {
-                        System.out.println("Graduation date is invalid. Entry please!!");
-                    } else {
-                        try {
-                            graduationDate = LocalDate.parse(graduationDateString, dateTimeFormatter);
-                            ValidatorService.birthdayCheck(graduationDate);
-                            ((Fresher) employeeUpdate).setGraduationDate(graduationDate);
-                            break;
-                        } catch (BirthdayException e) {
-                            System.out.println(e.getMessage());
-                        }
-                    }
-
-                }
-
-
+                LocalDate graduationDate = createDate(scanner);
+                ((Fresher) employeeUpdate).setGraduationDate(graduationDate);
                 System.out.println("Input graduation rank: ");
                 String graduationRank = scanner.nextLine();
                 ((Fresher) employeeUpdate).setGraduationRank(graduationRank);
@@ -348,5 +203,73 @@ public class UIManager {
         }
 
     }
-}
+    public static String createName(Scanner scanner){
+        String fullName;
+        while (true) {
+            try {
+                System.out.print("Input full name: ");
+                fullName = scanner.nextLine();
+                fullName = Arrays.stream(fullName.trim().replaceAll("\\s+", " ").split(" "))
+                        .map(w -> w.substring(0, 1).toUpperCase() + w.substring(1).toLowerCase())
+                        .collect(Collectors.joining(" "));
+                ValidatorService.nameCheck(fullName);
+                System.out.println(fullName);
+                break;
+            } catch (FullNameException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return fullName;
+    }
 
+    public static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    public static LocalDate createDate(Scanner scanner){
+        LocalDate birthday = null;
+        String birthdayString;
+        while (true) {
+            System.out.println("Input date(dd-MM-yyyy): ");
+            birthdayString = scanner.nextLine();
+            birthdayString = birthdayString.trim();
+            if (containsLetterRegex(birthdayString) || !containsBirthdayRegex(birthdayString)) {
+                System.out.println("Date is invalid. Entry please!!");
+            } else {
+                try {
+                    birthday = LocalDate.parse(birthdayString, dateTimeFormatter);
+                    ValidatorService.birthdayCheck(birthday);
+                    break;
+                } catch (BirthdayException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+        return birthday;
+    }
+    public static String createPhone(Scanner scanner){
+        String phone;
+        while (true) {
+            try {
+                System.out.print("Input Phone: ");
+                phone = scanner.nextLine();
+                ValidatorService.phoneCheck(phone);
+                break;
+            } catch (PhoneException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return phone;
+    }
+    public static String createEmail(Scanner scanner){
+        String email;
+        while (true) {
+            try {
+                System.out.print("Input Email: ");
+                email = scanner.nextLine();
+                ValidatorService.emailCheck(email);
+                break;
+            } catch (EmailException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return email;
+    }
+}
